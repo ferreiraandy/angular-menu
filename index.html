@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="application">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Angular Menu</title>
+
+    <link href="./assets/estilo/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="./assets/estilo/estilo.css" rel="stylesheet" type="text/css">
+
+    <script src="./assets/javascript/angular.min.js"></script>
+    <script src="./assets/javascript/angular-ui-router.min.js"></script>
+    <script src="./assets/javascript/angular-animate.js"></script>
+    <script src="./assets/javascript/bootstrap.min.js"></script>
+    <script src="./assets/javascript/router.js"></script>
+    <script src="./assets/javascript/application.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top menu-principal" ng-controller="menuPrincipal">
+      <div class="botao-menu hidden-lg hidden-md hidden-sm" ng-click="menuToggle()">
+        <i class="glyphicon glyphicon-th"></i>
+      </div>
+
+      <div class="container menu-ativo-deslizar {{class}}">
+        <div class="fechar hidden-lg hidden-md hidden-sm" ng-click="menuToggle()">
+          <i class="glyphicon glyphicon-remove"></i>
+        </div>
+
+        <div class="menu btn-group" uib-dropdown keyboard-nav>
+          <div class="produto-nome">Produto</div>
+
+          <ul class="bloco-menu" ng-controller="DropdownCtrl">
+            <div class="btn-group menu-item" uib-dropdown ng-repeat="menu in menuLista" keyboard-nav>
+              <a id="{{menu.id}}" class="btn" ui-sref="{{menu.url}}" uib-dropdown-toggle>
+                {{menu.text}}
+                <span class="{{(menu.items.length > 0)? 'caret' : ''}}"></span>
+              </a>
+
+              <ul ng-if="menu.items.length > 0" uib-dropdown-menu role="menu" aria-labelledby="{{menu.id}}">
+                <li role="menuitem" ng-repeat="item in menu.items">
+                  <a ui-sref="{{item.url}}">{{item.label}}</a>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="conteudo" ui-view></div>
+    </div>
+
+  </body>
+
+</html>

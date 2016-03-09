@@ -1,0 +1,93 @@
+body {
+  background: #CCC;
+}
+.menu-principal,
+.menu-principal .container{
+  background: #333;
+}
+.menu-principal{
+  border-bottom: 2px solid #FF681B;
+}
+.menu-principal .menu{
+  width: 100%;
+}
+.produto-nome{
+  color: #FFF;
+  font-size: 14pt;
+  font-weight: 600;
+  margin: 10px 0px 0px;
+}
+.menu-item,.menu-item:hover,.menu-item:active,.menu-item:focus,
+.menu-item a,.menu-item a:hover,.menu-item a:active,.menu-item a:focus{
+  background: transparent;
+  color: #FFF;
+  font-weight: 600;
+}
+
+@media(min-width: 768px){
+  .produto-nome{
+    float: left;
+  }
+  .bloco-menu{
+    float: right;
+    right: 0px;
+    margin: 8px 0px 0px;
+  }
+}
+@media(max-width: 767px){
+  body{
+    overflow-x: hidden;
+  }
+  .menu-principal .botao-menu{
+    color: #FFF;
+    font-size: 18pt;
+    margin: 10px 18px 0px;
+    cursor: pointer;
+  }
+  .produto-nome{
+    padding: 12px;
+    margin: 28px 0px 20px;
+  }
+  .menu-principal .container{
+    position: fixed;
+    left: -300px;
+    width: 300px;
+    overflow-y: auto;
+    top: 0px;
+    bottom: 0px;
+    z-index: 10;
+    transition: 0.5s;
+    border-right: 2px solid #FF681B;
+    border-bottom: none;
+  }
+  .menu-principal .container .fechar{
+    position: absolute;
+    color: #FFF;
+    z-index: 11;
+    margin: 40px 10px;
+    right: 16px;
+    font-size: 16pt;
+    cursor: pointer;
+  }
+  .menu-principal .container.menu-ativo{
+    transition: 0.5s;
+    left: 0;
+  }
+  .menu-principal ul{
+    padding: 0px;
+  }
+  .menu-item{
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+  }
+  .menu-item ul{
+    position: relative;
+    width: 100%;
+  }
+  .dropdown-menu li,
+  .dropdown-menu li a{
+    background: #333;
+    color: #FFF;
+  }
+}
